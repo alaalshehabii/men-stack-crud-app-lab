@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <main class="container">
+      <h1>All Animals</h1>
+
+      <% if (animals.length === 0) { %>
+        <p>No animals yet. <a href="/animals/new">Create one</a>!</p>
+      <% } else { %>
+        <ul class="card-grid">
+          <% animals.forEach(a => { %>
+            <li class="card">
+              <img src="<%= a.image %>" alt="<%= a.name %>" />
+              <div class="card-body">
+                <h3>
+                  <a href="/animals/<%= a._id %>"><%= a.name %></a>
+                </h3>
+                <p class="muted"><%= a.species %> • <%= a.age %> yrs</p>
+                <% if (a.isEndangered) { %>
+                  <span class="chip danger">Endangered</span>
+                <% } %>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </main>
+  </body>
+</html>

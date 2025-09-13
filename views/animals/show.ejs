@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <main class="container">
+      <article class="detail">
+        <img src="<%= animal.image %>" alt="<%= animal.name %>" />
+        <div>
+          <h1><%= animal.name %></h1>
+          <p class="muted"><strong>Species:</strong> <%= animal.species %></p>
+          <p class="muted"><strong>Age:</strong> <%= animal.age %> years</p>
+          <% if (animal.isEndangered) { %>
+            <p><span class="chip danger">Endangered</span></p>
+          <% } %>
+          <% if (animal.description) { %>
+            <p><%= animal.description %></p>
+          <% } %>
+
+          <div class="actions">
+            <a class="btn" href="/animals/<%= animal._id %>/edit">Edit</a>
+            <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this animal?');">
+              <button class="btn danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

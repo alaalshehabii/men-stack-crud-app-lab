@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <main class="container">
+      <h1>Edit Animal</h1>
+
+      <form action="/animals/<%= animal._id %>?_method=PUT" method="POST" class="form">
+        <label>
+          Name
+          <input name="name" value="<%= animal.name %>" required />
+        </label>
+
+        <label>
+          Species
+          <input name="species" value="<%= animal.species %>" required />
+        </label>
+
+        <label>
+          Age
+          <input type="number" name="age" min="0" value="<%= animal.age %>" />
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" name="isEndangered" <%= animal.isEndangered ? "checked" : "" %> />
+          Endangered
+        </label>
+
+        <label>
+          Image URL
+          <input name="image" value="<%= animal.image %>" />
+        </label>
+
+        <label>
+          Description
+          <textarea name="description" rows="4"><%= animal.description %></textarea>
+        </label>
+
+        <div class="actions">
+          <a href="/animals/<%= animal._id %>" class="btn secondary">Cancel</a>
+          <button class="btn" type="submit">Save</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

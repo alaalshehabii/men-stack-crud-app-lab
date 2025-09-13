@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <main class="container">
+      <h1>New Animal</h1>
+
+      <form action="/animals" method="POST" class="form">
+        <label>
+          Name
+          <input name="name" required />
+        </label>
+
+        <label>
+          Species
+          <input name="species" required />
+        </label>
+
+        <label>
+          Age
+          <input type="number" name="age" min="0" value="0" />
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" name="isEndangered" />
+          Endangered
+        </label>
+
+        <label>
+          Image URL
+          <input name="image" placeholder="https://..." />
+        </label>
+
+        <label>
+          Description
+          <textarea name="description" rows="4"></textarea>
+        </label>
+
+        <div class="actions">
+          <a href="/animals" class="btn secondary">Cancel</a>
+          <button class="btn" type="submit">Create</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
